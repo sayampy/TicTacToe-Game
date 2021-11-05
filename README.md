@@ -19,5 +19,5 @@ $ python setup.py install
 <kbd>1</kbd> to <kbd>9</kbd> keys for place a move
 <br><kbd>q</kbd> to exit
 ## Demo
-[![](tictactoe_demo.gif)](https://github.com/sayampy/TicTacToe-Game/)
+[![demo](tictactoe_demo.gif)](https://github.com/sayampy/TicTacToe-Game/)
 <br>**X:user O:player2[other user]**
