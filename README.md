@@ -14,6 +14,6 @@ $ python setup.py install
 ```
 ## How to play
 <kbd>1</kbd> to <kbd>9</kbd> keys for place a move
-<kbd>q</kbd> to exit
+<br><kbd>q</kbd> to exit
 ## Demo
 [![](tictactoe_demo.gif)](https://github.com/sayampy/TicTacToe-Game/)
