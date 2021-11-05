@@ -1,5 +1,6 @@
 # TicTacToe-Game
 A tictactoe game with curses in python. 3x3 game
+<strong>Any contribution will be appriciated</strong>
 ## Install
 ### using pip
 ```
