@@ -13,6 +13,8 @@ $ cd TicTacToe-Game
 $ python setup.py install
 ```
 ## How to play
+`tictactoe -h`
+ex: `$ tictactoe [you] [opponent]`
 <kbd>1</kbd> to <kbd>9</kbd> keys for place a move
 <br><kbd>q</kbd> to exit
 ## Demo
