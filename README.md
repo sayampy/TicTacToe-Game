@@ -17,3 +17,4 @@ $ python setup.py install
 <br><kbd>q</kbd> to exit
 ## Demo
 [![](tictactoe_demo.gif)](https://github.com/sayampy/TicTacToe-Game/)
+<br>**O:user X:random**
