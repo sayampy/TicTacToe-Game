@@ -69,12 +69,9 @@ def main_win(win, player1,opponent= 'human'):
         color_combo(1,COLOR_BLACK,COLOR_WHITE))
     win.refresh()
 
-    player1_move = move_modes.human_move
+    player1_move = move_modes.Mode(win,'human')
 
     player2_move = move_modes.Mode(win,opponent)
-
-    if player2_move == None:
-        raise Exception('ModeNotFound','no mode name %s' % opponent)
     cellwin_list = {} # to store 1 to 9 cells/points
     for cell_num in range(1,10):
          cell_win = cell(win, cell_num,win_x,win_y)
@@ -102,9 +99,13 @@ def main_win(win, player1,opponent= 'human'):
     gameover = False
     while gameover==False:
         if recent_player == player1:
-            moved = player1_move(win,points,recent_player)
+            moved = player1_move.make_move(
+                    points=points,player=recent_player,
+                    win=win)
         elif recent_player == player2:
-            moved = player2_move.make_move(points=points,player=recent_player)
+            moved = player2_move.make_move(
+                    points=points,
+                    player=recent_player,win=win)
         if moved:
             # Player turn switching
             if recent_player == cross:
@@ -239,5 +240,5 @@ def is_gameover(moves):
         # if game is not over
         return False
 if __name__ == '__main__':
-    wrapper(partial(main_win, player1 = 'x',opponent='random'))
+    wrapper(partial(main_win, player1 = 'x',opponent='human'))
 

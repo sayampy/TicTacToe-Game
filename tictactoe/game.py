@@ -2,7 +2,9 @@ import curses as curs
 from curses import *
 import os
 from functools import partial
-import move_modes
+try:
+    from . import move_modes
+except: import move_modes
 from pprint import pprint
 __env__={}
 
@@ -67,12 +69,9 @@ def main_win(win, player1,opponent= 'human'):
         color_combo(1,COLOR_BLACK,COLOR_WHITE))
     win.refresh()
 
-    player1_move = move_modes.human_move
+    player1_move = move_modes.Mode(win,'human')
 
-    player2_move = move_modes.modes.get(opponent)
-
-    if player2_move == None:
-        raise Exception('ModeNotFound','no mode name %s' % opponent)
+    player2_move = move_modes.Mode(win,opponent)
     cellwin_list = {} # to store 1 to 9 cells/points
     for cell_num in range(1,10):
          cell_win = cell(win, cell_num,win_x,win_y)
@@ -100,9 +99,13 @@ def main_win(win, player1,opponent= 'human'):
     gameover = False
     while gameover==False:
         if recent_player == player1:
-            moved = player1_move(win,points,recent_player)
+            moved = player1_move.make_move(
+                    points=points,player=recent_player,
+                    win=win)
         elif recent_player == player2:
-            moved = player2_move(win,points,recent_player)
+            moved = player2_move.make_move(
+                    points=points,
+                    player=recent_player,win=win)
         if moved:
             # Player turn switching
             if recent_player == cross:
@@ -124,10 +127,8 @@ def main_win(win, player1,opponent= 'human'):
             cell_win.bkgd(color_combo(2,COLOR_WHITE, COLOR_GREEN))
             cell_win.refresh()
     win.attroff(A_BOLD)
-    win.attron(A_BLINK)
     win.addstr(3,(win_x-len('press enter to continue'))//2,
-            'Press ENTER to continue')
-    win.attroff(A_BLINK)
+            'Press ENTER to continue',A_BLINK)
     win.refresh()
     while True:
         match win.getch():

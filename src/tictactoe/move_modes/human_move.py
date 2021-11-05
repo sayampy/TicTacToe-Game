@@ -1,7 +1,6 @@
 import curses as curs
-from curses import *
 from collections import namedtuple
-def human_move(win,points,recent_player):
+def human_move(win,points):
     curs.KEY_EXIT = ord('q')
     key = win.getch()
     match key:
@@ -13,7 +12,7 @@ def human_move(win,points,recent_player):
             cell_num = int(chr(key))
             if points.get(cell_num)!=None: cell_win = points[cell_num]
             else: curs.beep();return False # no move
-            __count=len(recent_player.split('\n'))
+            '''__count=len(recent_player.split('\n'))
             for text in recent_player.split('\n'):
                 cell_win_y, cell_win_x = cell_win.getmaxyx()
                 cell_win.addstr(
@@ -22,5 +21,5 @@ def human_move(win,points,recent_player):
                     text)
                 __count=-1
             cell_win.refresh()
-            points.pop(cell_num)
-            return points,cell_num
+            points.pop(cell_num)'''
+            return cell_num

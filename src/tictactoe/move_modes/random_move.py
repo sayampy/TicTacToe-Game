@@ -1,7 +1,7 @@
 import curses as curs
 import random
 from time import sleep
-def random_move(points, player):
+def random_move(points):
     if points == dict():
         # if no cells are empty
         return False
@@ -18,4 +18,4 @@ def random_move(points, player):
         __count=-1
     cell_win.refresh()
     points.pop(cell_num)'''
-    return player, cell_num
+    return cell_num

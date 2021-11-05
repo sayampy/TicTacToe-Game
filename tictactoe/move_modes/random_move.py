@@ -1,13 +1,13 @@
 import curses as curs
 import random
 from time import sleep
-def random_move(win,points,recent_player):
+def random_move(points):
     if points == dict():
         # if no cells are empty
         return False
     
     cell_num = random.choice(list(points.keys()))
-    cell_win = points[cell_num]
+    '''cell_win = points[cell_num]
     __count=len(recent_player.split('\n'))
     for text in recent_player.split('\n'):
         cell_win_y, cell_win_x = cell_win.getmaxyx()
@@ -17,5 +17,5 @@ def random_move(win,points,recent_player):
             text)
         __count=-1
     cell_win.refresh()
-    points.pop(cell_num)
-    return points, cell_num
+    points.pop(cell_num)'''
+    return cell_num
